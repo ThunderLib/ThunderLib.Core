@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.RegistryIni
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.GeneratorHelpers", "ThunderLib.Core.GeneratorHelpers\ThunderLib.Core.GeneratorHelpers.csproj", "{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{70283B70-855C-4574-9BC1-8C88B6D219CB} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{F510D991-C077-41C1-B835-526C0DE64544} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{EB79D489-B33E-4441-9303-5E7510F9F176} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
+		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64C14C22-CBD4-4C74-8E46-4C407398DEF9}
