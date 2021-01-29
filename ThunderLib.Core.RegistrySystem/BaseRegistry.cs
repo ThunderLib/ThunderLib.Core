@@ -15,10 +15,13 @@
         internal abstract RegistryHandle _handle { get; }
         internal Stage _stage { get; set; } = Stage.PreInit;
         protected internal virtual IEnumerable<RegistryHandle> dependencies => Enumerable.Empty<RegistryHandle>();
+        //TODO: Not implemented
         /// <summary>
         /// MUST BE CONSTANT RETURN
         /// </summary>
         protected internal virtual SByte priority => 0;
+
+        //TODO: Not implemented
         /// <summary>
         /// MUST BE CONSTANT RETURN
         /// </summary>
@@ -27,8 +30,13 @@
         /// MUST BE CONSTANT RETURN
         /// </summary>
         protected virtual Boolean autoRegisterTokens => true;
-        protected virtual void OnInitFinished() { }
+
+        //TODO: This is not referenced anywhere
+        protected internal virtual void OnInitFinished() { }
 
         protected internal abstract Boolean Init();
+        protected internal abstract Boolean ProcessProcedural();
+
+        protected internal abstract Boolean hasPendingProcedural { get; }
     }
 }

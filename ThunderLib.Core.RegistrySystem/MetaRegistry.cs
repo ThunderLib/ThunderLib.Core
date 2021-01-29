@@ -34,7 +34,7 @@
                 return;
             }
 
-            static Registry GetReg(Element a) => a?.regToken?.def;
+            static Registry GetReg(Element a) => a?.regToken?.def!;
             var defs = MakeInitOrder(backend.EnumerateElements().Select(GetReg).Where(NotNull));
 
             foreach(var d in defs)
@@ -45,45 +45,73 @@
                     continue;
                 }
             }
-        }
-        public static void ReloadAll()
-        {
-            if(stage == Stage.PreInit)
-            {
-                InitAll();
-            } else if(stage == Stage.Finalized)
-            {
-                InternalReloadAll();
-            } else
-            {
-                // TODO: Fatal Invalid state error
-                return;
-            }
-        }
 
-        private static void InternalReloadAll()
-        {
-            static Registry GetReg(Element a) => a?.regToken?.def;
-            static Boolean NotNull(Registry a) => a is not null;
-            var defs = MakeInitOrder(backend.EnumerateElements().Select(GetReg).Where(NotNull));
+            //Ensure OnStandardDefsCreated is called
 
-            foreach(var d in defs)
+            while(defs.Any(a => a.hasPendingProcedural))
             {
-                //if(!d.Unload())
-                //{
-                //    //TODO: Log fatal error
-                //    continue;
-                //}
+                foreach(var d in defs)
+                {
+                    //TODO: Need to log that procedural defs are being processed to identify loops
+                    if(d.hasPendingProcedural && !d.ProcessProcedural())
+                    {
+                        //TODO: Log error
+                        continue;
+                    }
+                }
             }
 
             foreach(var d in defs)
             {
-                //if(!d.Reload())
-                //{
-                //
-                //}
+                try
+                {
+                    d.OnInitFinished();
+                } catch(Exception e)
+                {
+                    //TODO: Log error
+                }
             }
         }
+
+        //TODO: Finish impl of hot reloading
+        //public static void ReloadAll()
+        //{
+        //    if(stage == Stage.PreInit)
+        //    {
+        //        InitAll();
+        //    } else if(stage == Stage.Finalized)
+        //    {
+        //        InternalReloadAll();
+        //    } else
+        //    {
+        //        // TODO: Fatal Invalid state error
+        //        return;
+        //    }
+        //}
+
+        //private static void InternalReloadAll()
+        //{
+        //    static Registry GetReg(Element a) => a?.regToken?.def;
+        //    static Boolean NotNull(Registry a) => a is not null;
+        //    var defs = MakeInitOrder(backend.EnumerateElements().Select(GetReg).Where(NotNull));
+
+        //    foreach(var d in defs)
+        //    {
+        //        //if(!d.Unload())
+        //        //{
+        //        //    //TODO: Log fatal error
+        //        //    continue;
+        //        //}
+        //    }
+
+        //    foreach(var d in defs)
+        //    {
+        //        //if(!d.Reload())
+        //        //{
+        //        //
+        //        //}
+        //    }
+        //}
 
         private static IEnumerable<Registry> MakeInitOrder(IEnumerable<Registry> input) => input
             .OrderBy(Guid)
@@ -96,8 +124,8 @@
         private static SByte Priority(Registry a) => a.priority;
         private static SByte Key(IGrouping<SByte, Registry> a) => a.Key;
         private static IEnumerable<Registry> WithDeps(IGrouping<SByte, Registry> a) => a.SelectMany(NotNullDependencies);
-        private static IEnumerable<Registry> NotNullDependencies(Registry a) => a.dependencies.Select((Func<RegistryHandle, Registry>)Registry).Where(NotNull);
-        private static Registry Registry(RegistryHandle a) => (a?.regToken?.def);
-        private static Boolean NotNull(Registry a) => a is not null;
+        private static IEnumerable<Registry> NotNullDependencies(Registry a) => a.dependencies.Select((Func<RegistryHandle, Registry?>)Registry).Where(NotNull)!;
+        private static Registry? Registry(RegistryHandle a) => (a?.regToken?.def);
+        private static Boolean NotNull(Registry? a) => a is not null;
     }
 }

@@ -19,6 +19,8 @@
         public sealed override String guid { get; } = $"{typeof(TRegistry).Assembly.GetName().Name}::{typeof(TRegistry).FullName}";
         internal sealed override RegistryHandle _handle { get; } = handle;
         protected internal sealed override Boolean Init() => TryInit();
+        protected internal sealed override Boolean hasPendingProcedural => pendingProceduralTokens.Count > 0;
+        protected internal sealed override Boolean ProcessProcedural() => ProcessProceduralTokens();
         #endregion
 
 
