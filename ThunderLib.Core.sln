@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30626.31
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core", "ThunderLib.Core\ThunderLib.Core.csproj", "{9B0A52E2-D139-48D0-864D-B37F9F611BAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {64C14C22-CBD4-4C74-8E46-4C407398DEF9}
+	EndGlobalSection
+EndGlobal
