@@ -10,6 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{213F1D4E-51F1-4830-9EEF-079A0B7C08D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.RegistrySystem", "ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj", "{70283B70-855C-4574-9BC1-8C88B6D219CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +26,17 @@ Global
 		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B0A52E2-D139-48D0-864D-B37F9F611BAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70283B70-855C-4574-9BC1-8C88B6D219CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70283B70-855C-4574-9BC1-8C88B6D219CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70283B70-855C-4574-9BC1-8C88B6D219CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70283B70-855C-4574-9BC1-8C88B6D219CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{213F1D4E-51F1-4830-9EEF-079A0B7C08D1} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
+		{70283B70-855C-4574-9BC1-8C88B6D219CB} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64C14C22-CBD4-4C74-8E46-4C407398DEF9}
