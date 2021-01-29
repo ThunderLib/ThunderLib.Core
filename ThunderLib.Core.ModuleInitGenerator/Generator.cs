@@ -1,5 +1,5 @@
 ﻿// This source generator scans for all class declarations and looks for those that inherit Registry, makes sure they are properly set up, and then emits a body for the module initializer
-namespace ThunderLib.Core.RegistryInitGenerator
+namespace ThunderLib.Core.ModuleInitGenerator
 {
     using System;
     using System.Collections.Generic;
@@ -14,26 +14,23 @@ namespace ThunderLib.Core.RegistryInitGenerator
     [Generator]
     public sealed class RegistryInitGenerator : ISourceGenerator
     {
-        const String registrySystemTypeName = "global::ThunderLib.Core.RegistrySystem.Registry";
-        const String registrySystemInitCall = "global::ThunderLib.Core.RegistrySystem.RegistryInitializer.Init";
+        const String registrySystemTypeName = "global::ThunderLib.Core.ModuleSystem.Module";
+        const String registrySystemInitCall = "global::ThunderLib.Core.ModuleSystem.ModuleRegistry.Add";
 
         public void Execute(GeneratorExecutionContext context)
         {
-            static Boolean InheritsRegistry(INamedTypeSymbol nts, INamedTypeSymbol top, out ITypeSymbol defTs, out ITypeSymbol backendTs)
+            static Boolean InheritsModule(INamedTypeSymbol nts, INamedTypeSymbol top)
             {
                 if(nts.IsStatic || nts.BaseType is not INamedTypeSymbol baseNts || !baseNts.IsGenericType)
                 {
-                    defTs = backendTs = null;
                     return false;
                 }
 
-                if(baseNts.GloballyQualifiedTypeName() == registrySystemTypeName && baseNts.TypeArguments.Length == 3 && baseNts.TypeArguments[0].GloballyQualifiedTypeName() == top.GloballyQualifiedTypeName())
+                if(baseNts.GloballyQualifiedTypeName() == registrySystemTypeName && baseNts.TypeArguments.Length == 1 && baseNts.TypeArguments[0].GloballyQualifiedTypeName() == top.GloballyQualifiedTypeName())
                 {
-                    defTs = baseNts.TypeArguments[1];
-                    backendTs = baseNts.TypeArguments[2];
                     return true;
                 }
-                return InheritsRegistry(baseNts, top, out defTs, out backendTs);
+                return InheritsModule(baseNts, top);
             }
 
 
@@ -44,20 +41,20 @@ namespace ThunderLib.Core.RegistryInitGenerator
                 var model = context.Compilation.GetSemanticModel(candidate.SyntaxTree, true);
                 var di = model.GetDeclaredSymbol(candidate);
                 if(!di.IsSealed || di.IsAbstract || di.IsGenericType) continue;
-                if(InheritsRegistry(di, di, out var defI, out var backI))
+                if(InheritsModule(di, di))
                 {
-                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}, {defI.GloballyQualifiedTypeName(true)}, {backI.GloballyQualifiedTypeName(true)}>();");
+                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}>();");
                 }
             }
 
-            context.AddSource("RegistrySystemInit",
+            context.AddSource("ModuleSystemInit",
 $@"
 namespace ThunderLib.Core.RegistrySystem
 {{
     internal static partial class _Module
     {{
         [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
-        internal static void InitRegistrySystem()
+        internal static void InitModuleSystem()
         {{
 {String.Join(Environment.NewLine, generatedCalls.Select(s => $"            {s}"))}
         }}

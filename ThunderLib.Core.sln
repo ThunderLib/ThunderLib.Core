@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{B465BBCC-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.NetUtils", "ThunderLib.Core.NetUtils\ThunderLib.Core.NetUtils.csproj", "{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.ModuleInitGenerator", "ThunderLib.Core.ModuleInitGenerator\ThunderLib.Core.ModuleInitGenerator.csproj", "{FD696379-BCF8-47C9-ABCA-4599D035BF2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD696379-BCF8-47C9-ABCA-4599D035BF2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD696379-BCF8-47C9-ABCA-4599D035BF2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD696379-BCF8-47C9-ABCA-4599D035BF2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD696379-BCF8-47C9-ABCA-4599D035BF2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{EB79D489-B33E-4441-9303-5E7510F9F176} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105} = {B465BBCC-2E92-41DB-8CB5-5A2158EC46F9}
+		{FD696379-BCF8-47C9-ABCA-4599D035BF2B} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64C14C22-CBD4-4C74-8E46-4C407398DEF9}
