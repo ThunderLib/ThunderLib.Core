@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
+	
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>Preview</LangVersion>
@@ -14,8 +14,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj" />
-	  <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" />
+	  <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
 	</ItemGroup>
+
 
 </Project>

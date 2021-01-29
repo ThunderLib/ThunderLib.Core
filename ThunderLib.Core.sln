@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30626.31
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core", "ThunderLib.Core\ThunderLib.Core.csproj", "{9B0A52E2-D139-48D0-864D-B37F9F611BAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core", "ThunderLib.Core\ThunderLib.Core.csproj", "{9B0A52E2-D139-48D0-864D-B37F9F611BAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2F31F8A-70D4-4774-9B84-211D1321D540}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,9 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Systems", "Systems", "{5224
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{213F1D4E-51F1-4830-9EEF-079A0B7C08D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.RegistrySystem", "ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj", "{70283B70-855C-4574-9BC1-8C88B6D219CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.RegistrySystem", "ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj", "{70283B70-855C-4574-9BC1-8C88B6D219CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.ModuleSystem", "ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj", "{F510D991-C077-41C1-B835-526C0DE64544}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.ModuleSystem", "ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj", "{F510D991-C077-41C1-B835-526C0DE64544}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.RegistryInitGenerator", "ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj", "{EB79D489-B33E-4441-9303-5E7510F9F176}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,10 @@ Global
 		{F510D991-C077-41C1-B835-526C0DE64544}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F510D991-C077-41C1-B835-526C0DE64544}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F510D991-C077-41C1-B835-526C0DE64544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB79D489-B33E-4441-9303-5E7510F9F176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB79D489-B33E-4441-9303-5E7510F9F176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +52,7 @@ Global
 		{213F1D4E-51F1-4830-9EEF-079A0B7C08D1} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{70283B70-855C-4574-9BC1-8C88B6D219CB} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{F510D991-C077-41C1-B835-526C0DE64544} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
+		{EB79D489-B33E-4441-9303-5E7510F9F176} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64C14C22-CBD4-4C74-8E46-4C407398DEF9}
