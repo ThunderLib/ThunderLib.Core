@@ -62,7 +62,7 @@ namespace ThunderLib.Core.RegistrySystem
 {{
     internal static partial class _Module
     {{
-        [ModuleInitializer]
+        [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
         internal static void InitRegistrySystem()
         {{
 {String.Join(Environment.NewLine, generatedCalls.Select(s => $"            {s}"))}
