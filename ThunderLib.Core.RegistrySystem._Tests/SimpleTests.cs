@@ -46,10 +46,10 @@ namespace ThunderLib.Core.RegistrySystem._Tests
             var tr3 = typeof(TestRegistry3).FullName!;
             var tr4 = typeof(TestRegistry4).FullName!;
 
-            var fti = "FirstTimeInit";
-            var cad = "CreateAdditionalDefs";
-            var ostc = "OnStandardTokensCreated";
-            var oif = "OnInitFinished";
+            const String fti = "FirstTimeInit";
+            const String cad = "CreateAdditionalDefs";
+            const String ostc = "OnStandardTokensCreated";
+            const String oif = "OnInitFinished";
 
 
             String[] Order(params String[] names) => names
