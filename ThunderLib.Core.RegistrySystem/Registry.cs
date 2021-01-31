@@ -38,17 +38,21 @@
 
 
         #region Singleton
-        private protected static TBackend? _backend;
-        private protected static TRegistry? _instance;
-        protected static TBackend backend => _backend ?? throw new InvalidOperationException();
-        protected static TRegistry instance => _instance ?? throw new InvalidOperationException();
+        private protected static TBackend _backend;
+        private protected static TRegistry _instance;
+        protected static ref TBackend backend => ref _backend;
+        protected static TRegistry instance => _instance;
 
         protected Registry() : base()
         {
             if(_instance is not null) throw new InvalidOperationException();
             _instance = (TRegistry)this;
             _backend = new();
-            backend.Init();
+            if(!backend.Init())
+            {
+                //TODO: Exception throw may need improvement
+                throw new Exception("Bakend init failed");
+            }
         }
         #endregion
 
@@ -93,7 +97,7 @@
         public static IEnumerable<RegistrationToken> FindRegTokens(Func<RegistrationToken, Boolean> condition, Boolean includeUnregistered) => includeUnregistered ? RegistrationToken.instancesList.Where(condition) : RegistrationToken.instancesList.Where(a => a.isRegistered).Where(condition);
 
         public static UInt64 count => backend.count;
-        public static RegistryHandle handle => new Handle();
+        public static RegistryHandle handle { get; } = new Handle();
         #endregion
 
 
@@ -162,6 +166,7 @@
         {
             if(!CheckDependencies())
             {
+                throw new Exception($"{instance.guid}.CheckDependencies() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -171,6 +176,7 @@
             }
             if(stage != Stage.PreInit)
             {
+                throw new Exception($"{instance.guid} stage is not PreInit");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -180,6 +186,7 @@
             }
             if(!FirstInit())
             {
+                throw new Exception($"{instance.guid}.FirstInit() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -189,6 +196,7 @@
             }
             if(!EnableBackend())
             {
+                throw new Exception($"{instance.guid}.EnableBackend() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -198,6 +206,7 @@
             }
             if(!GetDefaultTokens())
             {
+                throw new Exception($"{instance.guid}.GetDefaultTokens() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -207,6 +216,7 @@
             }
             if(!UnassignOutstandingTokens())
             {
+                throw new Exception($"{instance.guid}.UnassignOutstandingTokens() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -222,6 +232,7 @@
             }
             if(!RunOnStandardTokensCreated())
             {
+                throw new Exception($"{instance.guid}.RunOnStandardTokensCreated() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -232,6 +243,7 @@
             stage = Stage.Init;
             if(!ProcessStandardTokens())
             {
+                throw new Exception($"{instance.guid}.ProcessStandardTokens() failed");
                 //TODO: Log Error
                 if(!DisableBackend())
                 {
@@ -252,6 +264,7 @@
             {
                 if(!handle.initCompleted)
                 {
+                    throw new Exception($"dependency {handle.regToken.guid} has not been loaded");
                     //TODO: Log error
                     success = false;
                 }
@@ -265,7 +278,7 @@
             if(!firstInitComplete)
             {
                 var success = true;
-                success &= backend.Init();
+                success &= _backend.Init();
                 if(!success)
                 {
                     //TODO: Log error
@@ -561,7 +574,7 @@
         }
         private sealed class Handle : RegistryHandle
         {
-            private protected sealed override Registry target => instance;
+            private protected sealed override Registry _target => instance;
         }
         #endregion
     }

@@ -17,7 +17,7 @@
         public Boolean Init()
         {
             this.guidToElement = new();
-            return true;
+            return this.guidToElement is not null;
         }
 
         public Boolean TryEnable() => true;
@@ -49,6 +49,7 @@
             this.elementsArray = Array.Empty<Registry<TRegistry, TDef, SimpleBackend<TRegistry, TDef>>.Element>();
             foreach(var (_, elem) in this.guidToElement)
             {
+                if(elem is null) continue;
                 elem.index = Registry<TRegistry, TDef, SimpleBackend<TRegistry, TDef>>.Index.Invalid;
                 if(elem.hasToken)
                 {

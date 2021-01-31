@@ -1,21 +1,18 @@
 ﻿namespace ThunderLib.Core.RegistrySystem
 {
-    public static class RegistryInitializer
-    {
-        public static void Init<TRegistry, TDef, TBackend>()
-            where TRegistry : Registry<TRegistry, TDef, TBackend>, new()
-            where TDef : Registry<TRegistry, TDef, TBackend>.IRegistryDef
-            where TBackend : struct, Registry<TRegistry, TDef, TBackend>.IRegistryBackend
-        {
-            MetaRegistry.CreateIfNeeded();
-            //MetaRegistry is given special treatment because registering it with itself would mean adding numerous checks within it to ensure it does not initialize itself.
-            if(typeof(TRegistry) == typeof(MetaRegistry)) return;
-            try
-            {
-                var cat = new TRegistry();
-                cat.regToken = MetaRegistry.Add(cat);
-            } catch { }
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
 
-        }
+    public abstract class RegistryHandle
+    {
+        private protected abstract Registry _target { get; }
+
+        internal Boolean initCompleted => _target._stage == Stage.Finalized;
+        internal MetaRegistry.RegistrationToken? regToken => _target.regToken;
+        internal IEnumerable<RegistryHandle> dependencies => _target.dependencies;
+        internal SByte priority => _target.priority;
+
+        internal Registry target => _target;
     }
 }

@@ -4,6 +4,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyVersion>1.0.0.6</AssemblyVersion>
+
+    <FileVersion>1.0.0.6</FileVersion>
+	  <LangVersion>Preview</LangVersion>
+	  <Nullable>enable</Nullable>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
