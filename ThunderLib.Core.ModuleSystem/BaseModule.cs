@@ -8,8 +8,22 @@
     //TODO: Implement phased init for registry system.
     //Modules must be init before any user code, but registries must be init after.
     //Modules should still be on the registry system, so this means that there needs to be some way to control the init in phases
-    public class ModuleRegistry : Registry<ModuleRegistry, Module>
+    public sealed class ModuleRegistry : Registry<ModuleRegistry, Module>
     {
+        internal static void Add<T>(Boolean registerImmediately)
+            where T : Module<T>, new()
+        {
+            if(Module<T>.instanceExists) return;
+            var t = new T() as Module;
+            var tok = ModuleRegistry.Add(ref t);
+            tok.Register();
+            if(registerImmediately)
+            {
+                Module<T>.RequestLoad();
+            }
+        }
+
+
         protected override void OnInitFinished()
         {
             base.OnInitFinished();
@@ -21,6 +35,7 @@
                 if(def.shouldEnable)
                 {
                     def.Enable();
+                    def._loaded = true;
                 }
             }
         }
@@ -65,6 +80,10 @@
     public abstract class Module<TSelf> : Module
         where TSelf : Module<TSelf>
     {
+        internal static Boolean instanceExists => instance is not null;
+
+        public sealed override String guid { get; } = $"{typeof(TSelf).Assembly.GetName().Name}::{typeof(TSelf).FullName}";
+
         public static void RequestLoad()
         {
             if(!instance.regToken.isRegistered)
@@ -81,11 +100,15 @@
 
         internal sealed override Boolean shouldEnable => RequestedModuleLoads.Requested<TSelf>();
         private static TSelf instance = null!;
-        private Module()
+        /// <summary>
+        /// Do not call this manually. Use ModuleInitializer.Init instead
+        /// </summary>
+        public Module()
         {
             //TODO: Exception message
-            if(instance is not TSelf) throw new InvalidOperationException();
+            if(instance is TSelf) throw new InvalidOperationException("Instance already exists");
             instance = (this as TSelf)!;
+            if(instance is not TSelf) throw new InvalidOperationException("instance not created by constructor?");
         }
     }
 }

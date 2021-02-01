@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace ThunderLib.Core.RegistrySystem
+﻿namespace ThunderLib.Core.RegistrySystem
 {
+    using System;
     public static class RegistryInitializer
     {
         public static void Init<TRegistry, TDef, TBackend>(Boolean registerImmediately)
@@ -15,8 +14,8 @@ namespace ThunderLib.Core.RegistrySystem
             if(typeof(TRegistry) == typeof(MetaRegistry)) return;
             try
             {
-                var cat = new TRegistry();
-                cat.regToken = MetaRegistry.Add(cat);
+                var cat = new TRegistry() as Registry;
+                cat.regToken = MetaRegistry.Add(ref cat);
                 if(registerImmediately)
                 {
                     cat.regToken.Register();

@@ -61,7 +61,7 @@
         public static Boolean tokensRegisteredOnAdd => instance.autoRegisterTokens;
 
         [MethodImpl(MethodImplOptions.NoInlining)]
-        public static RegistrationToken Add(TDef def)
+        public static RegistrationToken Add(ref TDef def)
         {
             //Use stacktrace to find calling method for debugging.
             //TODO: Add some configuration to determine if the adding method discovery runs
@@ -69,10 +69,10 @@
             var frame = trace?.GetFrame(1);
             if((frame?.HasMethod() ?? false) && frame.GetMethod() is MethodBase method)
             {
-                return _Add(def, false, method);
+                return _Add(ref def, false, method);
             }
 
-            return _Add(def, false);
+            return _Add(ref def, false);
         }
         public static Boolean TryGetElement(Index index, out Element? element)
         {
@@ -110,7 +110,7 @@
 
 
         #region Protected Interface
-        protected static RegistrationToken _Add(TDef def, Boolean isBase, MethodBase addedBy = null)
+        protected static RegistrationToken _Add(ref TDef def, Boolean isBase, MethodBase addedBy = null)
         {
             RegistrationToken tok = null!;
             if(stage == Stage.PreInit)
@@ -127,6 +127,7 @@
                 tok = new(def, isBase, false);
                 if(tokensRegisteredOnAdd) tok.Register();
             }
+            def.regToken = tok;
             return tok;
         }
         #endregion

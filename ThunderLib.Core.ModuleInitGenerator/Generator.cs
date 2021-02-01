@@ -15,7 +15,7 @@ namespace ThunderLib.Core.ModuleInitGenerator
     public sealed class RegistryInitGenerator : ISourceGenerator
     {
         const String registrySystemTypeName = "global::ThunderLib.Core.ModuleSystem.Module";
-        const String registrySystemInitCall = "global::ThunderLib.Core.ModuleSystem.ModuleRegistry.Add";
+        const String registrySystemInitCall = "global::ThunderLib.Core.ModuleSystem.ModuleInitializer.Init";
 
         public void Execute(GeneratorExecutionContext context)
         {
@@ -43,19 +43,20 @@ namespace ThunderLib.Core.ModuleInitGenerator
                 if(!di.IsSealed || di.IsAbstract || di.IsGenericType) continue;
                 if(InheritsModule(di, di))
                 {
-                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}>();");
+                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}>(true);");
                 }
             }
 
             context.AddSource("ModuleSystemInit",
 $@"
-namespace ThunderLib.Core.RegistrySystem
+namespace ThunderLib.Core.ModuleSystem._GENERATED
 {{
     internal static partial class _Module
     {{
         [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
         internal static void InitModuleSystem()
         {{
+            //global::System.Console.WriteLine(""ModuleSystemInit"");
 {String.Join(Environment.NewLine, generatedCalls.Select(s => $"            {s}"))}
         }}
     }}

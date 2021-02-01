@@ -46,19 +46,20 @@ namespace ThunderLib.Core.RegistryInitGenerator
                 if(!di.IsSealed || di.IsAbstract || di.IsGenericType) continue;
                 if(InheritsRegistry(di, di, out var defI, out var backI))
                 {
-                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}, {defI.GloballyQualifiedTypeName(true)}, {backI.GloballyQualifiedTypeName(true)}>();");
+                    generatedCalls.Add($"{registrySystemInitCall}<{di.GloballyQualifiedTypeName(true)}, {defI.GloballyQualifiedTypeName(true)}, {backI.GloballyQualifiedTypeName(true)}>(true);");
                 }
             }
 
             context.AddSource("RegistrySystemInit",
 $@"
-namespace ThunderLib.Core.RegistrySystem
+namespace ThunderLib.Core.RegistrySystem._GENERATED
 {{
     internal static partial class _Module
     {{
         [global::System.Runtime.CompilerServices.ModuleInitializerAttribute]
         internal static void InitRegistrySystem()
         {{
+            //global::System.Console.WriteLine(""RegistrySystemInit"");
 {String.Join(Environment.NewLine, generatedCalls.Select(s => $"            {s}"))}
         }}
     }}
