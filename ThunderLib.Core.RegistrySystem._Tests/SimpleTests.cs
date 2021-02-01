@@ -12,7 +12,7 @@ namespace ThunderLib.Core.RegistrySystem._Tests
     using ThunderLib.Core.RegistrySystem;
 
     [TestFixture]
-    public class RegistryTests
+    public class InitProcessTesting
     {
         [OneTimeSetUp]
         public void Setup()
@@ -34,7 +34,7 @@ namespace ThunderLib.Core.RegistrySystem._Tests
         //TODO: Test does not cover priority sorting
 
         [Test]
-        public void TestInit()
+        public void Main()
         {
             static IEnumerable<String> ForType<TReg>(IEnumerable<String> log)
             {

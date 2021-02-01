@@ -4,7 +4,7 @@ namespace ThunderLib.Core.ModuleSystem._Tests
 
     using NUnit.Framework;
 
-    public class Tests
+    public class InitProcessTesting
     {
         [SetUp]
         public void Setup()
@@ -13,7 +13,7 @@ namespace ThunderLib.Core.ModuleSystem._Tests
         }
 
         [Test]
-        public void Test1()
+        public void Main()
         {
             Assert.That(TestModule1.loaded == false);
             RegistrySystem.MetaRegistry.InitAll();
