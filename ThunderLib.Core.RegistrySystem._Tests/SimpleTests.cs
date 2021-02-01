@@ -4,10 +4,8 @@ namespace ThunderLib.Core.RegistrySystem._Tests
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
-    using System.Reflection;
     using System.Runtime.CompilerServices;
 
-    using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollection;
 
     using NUnit.Framework;
 

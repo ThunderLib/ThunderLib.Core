@@ -5,7 +5,9 @@
     using ThunderLib.Core.RegistrySystem;
 
 
-    //TODO: There needs to be a phased init process for registry system. Modules need to init before user code, but other registries need to init after user code.
+    //TODO: Implement phased init for registry system.
+    //Modules must be init before any user code, but registries must be init after.
+    //Modules should still be on the registry system, so this means that there needs to be some way to control the init in phases
     public class ModuleRegistry : Registry<ModuleRegistry, Module>
     {
         protected override void OnInitFinished()
