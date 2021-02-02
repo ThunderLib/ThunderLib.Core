@@ -5,8 +5,8 @@
 		<LangVersion>Preview</LangVersion>
 		<Nullable>enable</Nullable>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<AssemblyVersion>0.0.1.29</AssemblyVersion>
-		<FileVersion>0.0.1.29</FileVersion>
+		<AssemblyVersion>0.0.1.40</AssemblyVersion>
+		<FileVersion>0.0.1.40</FileVersion>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,8 +14,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj" />
-	  <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" />
+	  <ProjectReference Include="..\ThunderLib.Core.NetUtils\ThunderLib.Core.NetUtils.csproj" />
+	  <ProjectReference Include="..\ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 	</ItemGroup>
 
 </Project>
