@@ -13,10 +13,17 @@
 		<DefineConstants>DEBUG;TRACE</DefineConstants>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Teronis.MSBuild.Packaging.ProjectBuildInPackage" Version="0.1.7">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\ThunderLib.Core.ModuleInitGenerator\ThunderLib.Core.ModuleInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" />
+    <ProjectReference Include="..\ThunderLib.Core.ModuleInitGenerator\ThunderLib.Core.ModuleInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <ProjectReference Include="..\ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
+    <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

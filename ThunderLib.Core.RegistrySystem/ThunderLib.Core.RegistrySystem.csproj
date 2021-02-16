@@ -14,8 +14,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ThunderLib.Core.NetUtils\ThunderLib.Core.NetUtils.csproj" />
-	  <ProjectReference Include="..\ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	  <PackageReference Include="Teronis.MSBuild.Packaging.ProjectBuildInPackage" Version="0.1.7">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ThunderLib.Core.NetUtils\ThunderLib.Core.NetUtils.csproj" PrivateAssets="all" />
+	  <ProjectReference Include="..\ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" PrivateAssets="all" />
 	</ItemGroup>
 
 </Project>

@@ -14,8 +14,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj" />
-	  <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" />
+	  <PackageReference Include="Teronis.MSBuild.Packaging.ProjectBuildInPackage" Version="0.1.7">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\ThunderLib.Core.ModuleSystem\ThunderLib.Core.ModuleSystem.csproj" PrivateAssets="all" />
+	  <ProjectReference Include="..\ThunderLib.Core.RegistrySystem\ThunderLib.Core.RegistrySystem.csproj" PrivateAssets="all" />
 	</ItemGroup>
 
 </Project>
