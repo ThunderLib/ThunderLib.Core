@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.0.0.23</AssemblyVersion>
+    <AssemblyVersion>1.0.0.24</AssemblyVersion>
 
-    <FileVersion>1.0.0.23</FileVersion>
+    <FileVersion>1.0.0.24</FileVersion>
 	  <LangVersion>Preview</LangVersion>
 	  <Nullable>enable</Nullable>
 	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

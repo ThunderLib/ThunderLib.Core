@@ -21,8 +21,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.RegistryInitGenerator", "ThunderLib.Core.RegistryInitGenerator\ThunderLib.Core.RegistryInitGenerator.csproj", "{EB79D489-B33E-4441-9303-5E7510F9F176}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.GeneratorHelpers", "ThunderLib.Core.GeneratorHelpers\ThunderLib.Core.GeneratorHelpers.csproj", "{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}"
+	ProjectSection(SolutionItems) = preProject
+		ThunderLib.Core.GeneratorHelpers\TypeSymbolXtn.cs = ThunderLib.Core.GeneratorHelpers\TypeSymbolXtn.cs
+		TypeSymbolXtn.cs = TypeSymbolXtn.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Util", "Util", "{B465BBCC-2E92-41DB-8CB5-5A2158EC46F9}"
 EndProject
@@ -30,9 +32,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.NetUtils", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.ModuleInitGenerator", "ThunderLib.Core.ModuleInitGenerator\ThunderLib.Core.ModuleInitGenerator.csproj", "{FD696379-BCF8-47C9-ABCA-4599D035BF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.RegistrySystem._Tests", "ThunderLib.Core.RegistrySystem._Tests\ThunderLib.Core.RegistrySystem._Tests.csproj", "{64BF6197-B9D1-476D-80D0-A2AF70005335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.RegistrySystem._Tests", "ThunderLib.Core.RegistrySystem._Tests\ThunderLib.Core.RegistrySystem._Tests.csproj", "{64BF6197-B9D1-476D-80D0-A2AF70005335}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThunderLib.Core.ModuleSystem._Tests", "ThunderLib.Core.ModuleSystem._Tests\ThunderLib.Core.ModuleSystem._Tests.csproj", "{84EFCED7-9F1A-4D97-936C-A04E5CEF0507}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThunderLib.Core.ModuleSystem._Tests", "ThunderLib.Core.ModuleSystem._Tests\ThunderLib.Core.ModuleSystem._Tests.csproj", "{84EFCED7-9F1A-4D97-936C-A04E5CEF0507}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,10 +58,6 @@ Global
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB79D489-B33E-4441-9303-5E7510F9F176}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,7 +83,6 @@ Global
 		{70283B70-855C-4574-9BC1-8C88B6D219CB} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{F510D991-C077-41C1-B835-526C0DE64544} = {5224FC5E-3D6B-4BAC-BD72-9C85B474B04F}
 		{EB79D489-B33E-4441-9303-5E7510F9F176} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
-		{BAD5DE27-6404-442A-8AAE-E34BBFBE72DB} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 		{F5EDBD54-94C6-4E15-AB47-4F2F725DB105} = {B465BBCC-2E92-41DB-8CB5-5A2158EC46F9}
 		{FD696379-BCF8-47C9-ABCA-4599D035BF2B} = {DB01F02E-2E6E-477A-8019-DEE6C8EA19C9}
 		{64BF6197-B9D1-476D-80D0-A2AF70005335} = {213F1D4E-51F1-4830-9EEF-079A0B7C08D1}
