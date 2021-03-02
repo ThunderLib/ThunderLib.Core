@@ -138,6 +138,19 @@
             def.regToken = tok;
             return tok;
         }
+
+        protected static Element _CreateElement(String guid)
+        {
+            return new Element(guid);
+        }
+        protected static void _ModifyElement(Element elem, Index index)
+        {
+            elem.index = index;
+        }
+        protected static void _ModifyElement(Element elem, RegistrationToken token)
+        {
+            elem.regToken = token;
+        }
         #endregion
 
 
@@ -485,7 +498,7 @@
             public Index index { get => this.hasToken ? this._index : Index.Invalid; internal set => this._index = value; }
             public Boolean active => this.index != Index.Invalid;
 
-            public Element(String guid)
+            internal Element(String guid)
             {
                 this.guid = guid;
             }
