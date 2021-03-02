@@ -21,6 +21,14 @@
         protected internal sealed override Boolean Init() => TryInit();
         protected internal sealed override Boolean hasPendingProcedural => pendingProceduralTokens.Count > 0;
         protected internal sealed override Boolean ProcessProcedural() => ProcessProceduralTokens();
+        protected internal sealed override void OnInitFinished()
+        {
+            if(!backend.Finalize())
+            {
+                //TODO: Log error
+                //TODO: This may be an important extension point
+            }
+        }
         #endregion
 
 
