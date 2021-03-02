@@ -485,7 +485,7 @@
             public Index index { get => this.hasToken ? this._index : Index.Invalid; internal set => this._index = value; }
             public Boolean active => this.index != Index.Invalid;
 
-            internal Element(String guid)
+            public Element(String guid)
             {
                 this.guid = guid;
             }
